@@ -18,14 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['username'] = $username;
         $_SESSION['logged_in'] = true;
 
-        // 返回 JSON 格式的成功信息
         echo json_encode(array('success' => true));
     } else {
-        // 登入失敗，返回 JSON 格式的失敗信息
         echo json_encode(array('success' => false));
     }
 } else {
-    // 如果不是 POST 請求，返回 404 錯誤
     http_response_code(404);
 }
 ?>
+
