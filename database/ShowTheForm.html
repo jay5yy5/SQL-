@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>資料查詢</title>
+</head>
+<body>
+<form id="show" action="ShowTheForm.php" method="post">
+    <label for="tableChoice">請選擇資料表：</label>
+    <select id="tableChoice" name="tableChoice" required>
+        <option value="">請選擇</option>
+        <option value="學生">學生</option>
+        <option value="聯絡人">聯絡人</option>
+        <option value="員工">員工</option>
+        <option value="負責項目">負責項目</option>
+        <option value="部門">部門</option>
+    </select><br><br>
+    <div id="dynamicFields"></div>
+    <input type="submit" value="查詢">
+    <button type="submit" name="showAll" value="true">顯示全部</button>
+</form>
+
+<script>
+    document.getElementById('tableChoice').addEventListener('change', function() {
+        var tableChoice = this.value;
+        var dynamicFields = document.getElementById('dynamicFields');
+
+        if (tableChoice === '學生') {
+            dynamicFields.innerHTML = `
+                <label for="studentId">學生學號：</label><input type="text" id="studentId" name="studentId"><br><br>
+                <label for="studentName">學生姓名：</label><input type="text" id="studentName" name="studentName"><br><br>
+                <label for="studentGender">學生性別：</label><input type="text" id="studentGender" name="studentGender"><br><br>
+                <label for="studentBirthday">學生生日：</label><input type="text" id="studentBirthday" name="studentBirthday"><br><br>
+                <label for="studentPhone">學生電話：</label><input type="text" id="studentPhone" name="studentPhone"><br><br>
+                <label for="studentAddress">學生地址：</label><input type="text" id="studentAddress" name="studentAddress"><br><br>
+            `;
+        } else if (tableChoice === '部門') {
+            dynamicFields.innerHTML = `
+                <label for="departmentId">部門編號：</label><input type="text" id="departmentId" name="departmentId"><br><br>
+                <label for="projectId">項目編號：</label><input type="text" id="projectId" name="projectId"><br><br>
+                <label for="departmentName">部門名稱：</label><input type="text" id="departmentName" name="departmentName"><br><br>
+                <label for="departmentPhone">部門座機：</label><input type="text" id="departmentPhone" name="departmentPhone"><br><br>
+            `;
+        } else if (tableChoice === '員工') {
+            dynamicFields.innerHTML = `
+                <label for="employeeId">員工編號：</label><input type="text" id="employeeId" name="employeeId"><br><br>
+                <label for="departmentId">部門編號：</label><input type="text" id="departmentId" name="departmentId"><br><br>
+                <label for="employeeGender">員工性別：</label><input type="text" id="employeeGender" name="employeeGender"><br><br>
+                <label for="employeeName">員工姓名：</label><input type="text" id="employeeName" name="employeeName"><br><br>
+            `;
+        } else if (tableChoice === '聯絡人') {
+            dynamicFields.innerHTML = `
+                <label for="studentId">學生學號：</label><input type="text" id="studentId" name="studentId"><br><br>
+                <label for="contactAddress">聯絡人地址：</label><input type="text" id="contactAddress" name="contactAddress"><br><br>
+                <label for="contactPhone">聯絡人電話：</label><input type="text" id="contactPhone" name="contactPhone"><br><br>
+                <label for="contactName">聯絡人姓名：</label><input type="text" id="contactName" name="contactName"><br><br>
+            `;
+        } else if (tableChoice === '負責項目') {
+            dynamicFields.innerHTML = `
+                <label for="projectId">項目編號：</label><input type="text" id="projectId" name="projectId"><br><br>
+                <label for="employeeId">員工編號：</label><input type="text" id="employeeId" name="employeeId"><br><br>
+                <label for="projectName">項目名稱：</label><input type="text" id="projectName" name="projectName"><br><br>
+            `;
+        } else {
+            dynamicFields.innerHTML = ''; // 清空 dynamicFields 內容
+        }
+    });
+</script>
+</body>
+</html>

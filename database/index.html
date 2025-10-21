@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>資料庫系統期末專題</title>
+</head>
+<body>
+<!-- 登录表单 -->
+<form id="loginForm" action="login.php" method="post">
+    <label for="account">帳號</label>
+    <input type="text" id="account" name="account" required><br><br>
+    <label for="ad_password">密碼</label>
+    <input type="password" id="ad_password" name="ad_password" required><br><br>
+    <input type="submit" value="登入">
+</form>
+
+<script>
+    window.onload = function() {
+        var loginForm = document.getElementById('loginForm');
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var account = document.getElementById('account').value;
+            var password = document.getElementById('ad_password').value;
+
+            // 模拟服务器端验证
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'login.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        window.location.href = 'functionflow.html';
+                    } else {
+                        alert('登入失敗，請重新輸入');
+                    }
+                }
+            };
+            xhr.send('account=' + encodeURIComponent(account) + '&ad_password=' + encodeURIComponent(password));
+        });
+    };
+</script>
+</body>
+</html>

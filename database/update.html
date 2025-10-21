@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>修改選項</title>
+</head>
+<body>
+
+<!-- 修改表單 -->
+<form id="updateForm" action="update.php" method="post">
+    <label for="tableChoice">選擇資料表：</label>
+    <select id="tableChoice" name="tableChoice" onchange="updateFormLabels()">
+        <option value="學生">學生</option>
+        <option value="聯絡人">聯絡人</option>
+        <option value="員工">員工</option>
+        <option value="負責項目">負責項目</option>
+        <option value="部門">部門</option>
+    </select><br><br>
+    <label id="identifierLabel" for="identifier">輸入識別符號：</label>
+    <input type="text" id="identifier" name="identifier" required><br><br>
+    <label for="column">選擇要修改的屬性：</label>
+    <input type="text" id="column" name="column" required><br><br>
+    <label for="newValue">輸入新值：</label>
+    <input type="text" id="newValue" name="newValue" required><br><br>
+    <input type="submit" value="提交">
+</form>
+
+<script>
+    // 函數：更新修改表單的標籤
+    function updateFormLabels() {
+        var tableChoice = document.getElementById('tableChoice').value;
+        var identifierLabel = document.getElementById('identifierLabel');
+        switch (tableChoice) {
+            case '學生':
+                identifierLabel.textContent = '輸入學生ID：';
+                break;
+            case '聯絡人':
+                identifierLabel.textContent = '輸入聯絡人姓名：';
+                break;
+            case '員工':
+                identifierLabel.textContent = '輸入員工ID：';
+                break;
+            case '負責項目':
+                identifierLabel.textContent = '輸入項目ID：';
+                break;
+            case '部門':
+                identifierLabel.textContent = '輸入部門ID：';
+                break;
+            default:
+                identifierLabel.textContent = '輸入識別符號：';
+                break;
+        }
+    }
+</script>
+
+</body>
+</html>

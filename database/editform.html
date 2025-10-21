@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>資料庫系統期末專題</title>
+</head>
+<body>
+<form id="dormitory" action="submit.php" method="post">
+  <label for="choice">請輸入要新增的 table 名稱</label>
+  <input type="text" id="choice" name="choice"><br><br>
+  <div id="dynamicFields"></div>
+  <input type="submit" value="提交">
+  <button type="button" onclick="goBack()">返回</button>
+</form>
+<script>
+  function goBack() {
+    window.location.href = 'editform.html';
+  }
+
+  window.onload = function() {
+    var choiceField = document.getElementById('choice');
+    var dynamicFields = document.getElementById('dynamicFields');
+
+    choiceField.addEventListener('input', function() {
+      var choiceValue = choiceField.value;
+      if (choiceValue === '學生') {
+        dynamicFields.innerHTML = `
+                    <label for="studentId">學生學號</label><input type="text" id="studentId" name="studentId"><br><br>
+                    <label for="studentName">學生姓名</label><input type="text" id="studentName" name="studentName"><br><br>
+                    <label for="studentGender">學生性別</label><input type="text" id="studentGender" name="studentGender"><br><br>
+                    <label for="studentBirthday">學生生日</label><input type="text" id="studentBirthday" name="studentBirthday"><br><br>
+                    <label for="studentPhone">學生電話</label><input type="text" id="studentPhone" name="studentPhone"><br><br>
+                    <label for="studentAddress">學生地址</label><input type="text" id="studentAddress" name="studentAddress"><br><br>
+                `;
+      } else if (choiceValue === '部門') {
+        dynamicFields.innerHTML = `
+                    <label for="departmentId">部門編號</label><input type="number" id="departmentId" name="departmentId"><br><br>
+                    <label for="departmentName">部門名稱</label><input type="text" id="departmentName" name="departmentName"><br><br>
+                    <label for="departmentPhone">部門座機</label><input type="text" id="departmentPhone" name="departmentPhone"><br><br>
+                `;
+      } else if (choiceValue === '員工') {
+        dynamicFields.innerHTML = `
+                    <label for="employeeId">員工編號</label><input type="number" id="employeeId" name="employeeId"><br><br>
+                    <label for="departmentId">部門編號</label><input type="number" id="departmentId" name="departmentId"><br><br>
+                    <label for="employeeGender">員工性別</label><input type="text" id="employeeGender" name="employeeGender"><br><br>
+                    <label for="employeeName">員工姓名</label><input type="text" id="employeeName" name="employeeName"><br><br>
+                    <label for="projectId">項目編號</label><input type="number" id="projectId" name="projectId"><br><br>
+                `;
+      } else if (choiceValue === '聯絡人') {
+        dynamicFields.innerHTML = `
+                    <label for="studentId">學生學號</label><input type="text" id="studentId" name="studentId"><br><br>
+                    <label for="contactAddress">聯絡人地址</label><input type="text" id="contactAddress" name="contactAddress"><br><br>
+                    <label for="contactPhone">聯絡人電話</label><input type="text" id="contactPhone" name="contactPhone"><br><br>
+                    <label for="contactName">聯絡人姓名</label><input type="text" id="contactName" name="contactName"><br><br>
+                `;
+      } else if (choiceValue === '負責項目') {
+        dynamicFields.innerHTML = `
+                    <label for="projectId">項目編號</label><input type="number" id="projectId" name="projectId"><br><br>
+                    <label for="departmentId">部門編號</label><input type="number" id="departmentId" name="departmentId"><br><br>
+                    <label for="projectName">項目名稱</label><input type="text" id="projectName" name="projectName"><br><br>
+                `;
+      } else {
+        dynamicFields.innerHTML = ''; // 清空 dynamicFields 內容
+      }
+    });
+  };
+</script>
+</body>
+</html>
