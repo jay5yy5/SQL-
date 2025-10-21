@@ -5,7 +5,6 @@
     <title>資料庫系統期末專題</title>
 </head>
 <body>
-<!-- 登录表单 -->
 <form id="loginForm" action="login.php" method="post">
     <label for="account">帳號</label>
     <input type="text" id="account" name="account" required><br><br>
@@ -23,7 +22,6 @@
             var account = document.getElementById('account').value;
             var password = document.getElementById('ad_password').value;
 
-            // 模拟服务器端验证
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'login.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -42,4 +40,5 @@
     };
 </script>
 </body>
+
 </html>
