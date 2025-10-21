@@ -6,7 +6,6 @@
 </head>
 <body>
 
-<!-- 修改表單 -->
 <form id="updateForm" action="update.php" method="post">
     <label for="tableChoice">選擇資料表：</label>
     <select id="tableChoice" name="tableChoice" onchange="updateFormLabels()">
@@ -26,7 +25,6 @@
 </form>
 
 <script>
-    // 函數：更新修改表單的標籤
     function updateFormLabels() {
         var tableChoice = document.getElementById('tableChoice').value;
         var identifierLabel = document.getElementById('identifierLabel');
@@ -55,3 +53,4 @@
 
 </body>
 </html>
+
