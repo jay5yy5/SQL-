@@ -6,9 +6,19 @@
 </head>
 <body>
 <form id="dormitory" action="submit.php" method="post">
-  <label for="choice">請輸入要新增的 table 名稱</label>
-  <input type="text" id="choice" name="choice"><br><br>
+  <label for="choice">請選擇要新增的資料表：</label>
+  <select id="choice" name="choice" required>
+    <option value="" selected disabled>— 請選擇 —</option>
+    <option value="學生">學生</option>
+    <option value="部門">部門</option>
+    <option value="員工">員工</option>
+    <option value="聯絡人">聯絡人</option>
+    <option value="負責項目">負責項目</option>
+  </select>
+  <br><br>
+
   <div id="dynamicFields"></div>
+
   <input type="submit" value="提交">
   <button type="button" onclick="goBack()">返回</button>
 </form>
